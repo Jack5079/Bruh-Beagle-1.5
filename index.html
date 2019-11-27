@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <head>
+        <script>
+            // This is the "Offline page" service worker
+
+            // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+
+            // Check compatibility for the browser we're running this in
+            if ("serviceWorker" in navigator) {
+                if (navigator.serviceWorker.controller) {
+                    console.log("[PWA Builder] active service worker found, no need to register");
+                } else {
+                    // Register the service worker
+                    navigator.serviceWorker
+                        .register("pwabuilder-sw.js", {
+                            scope: "./"
+                        })
+                        .then(function (reg) {
+                            console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+                        });
+                }
+            }
+
+        </script>
+        <meta charset="utf-8" />
+        <title>Loading...</title>
+        <link rel='shortcut icon' type='image/png' href='./icon.png' />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="preloader-animation.css" rel="stylesheet" type="text/css" media="screen">
+        <meta name="description" content="The lost bruh beagle game!" />
+        <meta property="og:title" content="Bruh Beagle 1.5" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://jack5079.github.io/Bruh-Beagle-1.5/" />
+        <meta property="og:image" content="https://jack5079.github.io/Bruh-Beagle-1.5/icon.png" />
+        <meta property="og:description" content="Survive the G in this game about H!" />
+
+        <style>
+            body,
+            html {
+                margin: 0px;
+                width: 100%;
+                height: 100%;
+            }
+
+            #wick-canvas-container {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="wick-canvas-container">
+            <!-- Preloader -->
+            <div id="preloader">
+                <progress max="100" value="0"></progress>
+                <div id="loading-bar">Loading...</div>
+                <div class="flashy">
+                    <img src="./icon.png" alt="Molly" width="100%">
+                </div>
+                <div class="shadow">
+                    <svg viewBox="0 0 100 50" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <ellipse cx="50" cy="25" rx="40" ry="10" style="fill: white; opacity: 0.2;" />
+                    </svg>
+                </div>
+                <div class="text">
+                    <h2>Bruh Beagle 1.5</h2>
+                </div>
+            </div>
+        </div>
+        <script src="preloadjs.min.js" defer></script>
+        <script src="loadproject.js" defer></script>
+    </body>
+
+</html>
